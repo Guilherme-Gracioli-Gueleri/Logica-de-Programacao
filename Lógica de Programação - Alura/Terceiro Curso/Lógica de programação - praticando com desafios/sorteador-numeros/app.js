@@ -5,9 +5,15 @@ function sortear() {
 
     if (de >= ate) {
         alert('Campo "Do número" deve ser inferior ao campo "Até o número". Verifique!');
-        limparCaixa();
+        alterarStatusBotao();
         return;
-      }
+    }
+
+    if (quantidade > (ate - de + 1)) {
+        alert('Campo "Quantidade" deve ser menor ou igual ao intervalo informado no campo "Do número" até o campo "Até o número". Verifique!');
+        alterarStatusBotao();
+        return;
+    }
 
     let sorteados = [];
     let numero;
@@ -46,12 +52,5 @@ function reiniciar() {
     document.getElementById('de').value = '';
     document.getElementById('ate').value = '';
     document.getElementById('resultado').innerHTML = `<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>`;
-    alterarStatusBotao();
-}
-
-function limparCaixa() {
-    document.getElementById('quantidade').value = '';
-    document.getElementById('de').value = '';
-    document.getElementById('ate').value = '';
     alterarStatusBotao();
 }
